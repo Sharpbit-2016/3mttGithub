@@ -117,7 +117,7 @@ const RepoCard = ({ repo, setRepos }) => {
                 </Badge>
             </Flex>
             <Flex justify="flex-end" mt={4}>
-                <Link href={{ pathname: "/routes/repo-details", query: { fullName: repo.full_name } }}>
+                <Link href={{ pathname: "/routes/repodetails", query: { fullName: repo.full_name } }}>
                     <Button colorScheme="teal" size="sm" mr={2}>
                         View Repository
                     </Button>

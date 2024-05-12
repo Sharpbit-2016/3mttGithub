@@ -34,7 +34,7 @@ interface LinkItemProps {
 
 const LinkItems: Array<LinkItemProps> = [
   { name: 'Repositories', icon: FiHome, path:"/"},
-  { name: 'Error Boundary', icon: FiTrendingUp, path:"/routes/error-boundary" },
+  { name: 'Error Boundary', icon: FiTrendingUp, path:"/routes/errorboundary" },
   { name: '404 Error', icon: FiCompass, path:"/invalid" },
 ];
 
