@@ -7,7 +7,7 @@ import {
   BreadcrumbLink,
   Heading,
 } from "@chakra-ui/react";
-import RepoDetails from "./RepoDetails";
+import RepoDetails from "../../components/RepoDetails";
 import { useRouter, useSearchParams } from "next/navigation";
 import { fetchRepoById } from "../../services.tsx/FetchRepos";
 import { Repo } from "../../types/repo";
