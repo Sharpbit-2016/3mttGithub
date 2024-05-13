@@ -73,33 +73,41 @@ const RepoDetails = ({ repo }) => {
       <Divider />
       
       {/* Repository details */}
-      <Flex alignItems="center" mt={4}>
-        <Text mr={4} fontWeight="bold">
-          Stars:
-        </Text>
-        <Text>{repo.stargazers_count}</Text>
-        <Text mx={4} fontWeight="bold">
-          Forks:
-        </Text>
-        <Text>{repo.forks_count}</Text>
-        <Text mx={4} fontWeight="bold">
-          License:
-        </Text>
-        <Text>{repo.license ? repo.license.name : "Unknown"}</Text>
+      <Flex alignItems="center" justifyContent="space-between" mt={4} flexWrap="wrap">
+        <Flex alignItems="center" flexWrap="wrap">
+          <Text mr={4} fontWeight="bold">
+            Stars:
+          </Text>
+          <Text>{repo.stargazers_count}</Text>
+          <Text mx={4} fontWeight="bold">
+            Forks:
+          </Text>
+          <Text>{repo.forks_count}</Text>
+        </Flex>
+        <Flex alignItems="center" flexWrap="wrap" mt={{ base: 4, md: 0 }}>
+          <Text mx={4} fontWeight="bold">
+            License:
+          </Text>
+          <Text>{repo.license ? repo.license.name : "Unknown"}</Text>
+        </Flex>
       </Flex>
-      <Flex alignItems="center" mt={4}>
-        <Text mr={4} fontWeight="bold">
-          Language:
-        </Text>
-        <Text>{repo.language || "Unknown"}</Text>
-        <Text mx={4} fontWeight="bold">
-          Created:
-        </Text>
-        <Text>{new Date(repo.created_at).toLocaleDateString()}</Text>
-        <Text mx={4} fontWeight="bold">
-          Last Updated:
-        </Text>
-        <Text>{new Date(repo.updated_at).toLocaleDateString()}</Text>
+      <Flex alignItems="center" justifyContent="space-between" mt={4} flexWrap="wrap">
+        <Flex alignItems="center" flexWrap="wrap">
+          <Text mr={4} fontWeight="bold">
+            Language:
+          </Text>
+          <Text>{repo.language || "Unknown"}</Text>
+          <Text mx={4} fontWeight="bold">
+            Created:
+          </Text>
+          <Text>{new Date(repo.created_at).toLocaleDateString()}</Text>
+        </Flex>
+        <Flex alignItems="center" flexWrap="wrap" mt={{ base: 4, md: 0 }}>
+          <Text mx={4} fontWeight="bold">
+            Last Updated:
+          </Text>
+          <Text>{new Date(repo.updated_at).toLocaleDateString()}</Text>
+        </Flex>
       </Flex>
       <Flex alignItems="center" mt={4} overflowX="auto">
         <Text mr={4} fontWeight="bold">
