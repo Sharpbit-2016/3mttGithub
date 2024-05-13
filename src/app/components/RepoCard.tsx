@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 import { Badge, Box, Button, Flex, Text, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, FormControl, FormLabel, Input, Textarea, Spinner, useToast } from "@chakra-ui/react";
 import Link from "next/link";

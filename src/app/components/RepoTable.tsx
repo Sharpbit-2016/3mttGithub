@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, {Suspense, useState } from "react";
 import PropTypes from "prop-types";
 import {
   Flex,
@@ -58,7 +58,10 @@ const RepoTable = ({ data, columns, itemsPerPage, setRepos }) => {
       />
       <Stack spacing={4}>
         {currentData.map((repo, index) => (
-          <RepoCard key={index} repo={repo} setRepos={setRepos} />
+          // Wrap RepoPage component with Suspense
+          <Suspense key={repo.id} fallback={<div>Loading...</div>}>
+          <RepoCard repo={repo} setRepos={setRepos} />
+        </Suspense>
         ))}
       </Stack>
 

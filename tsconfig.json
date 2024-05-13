@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/404.tsx", "src/app/components/ErrorBoundary.js"  ],
+, "pages/404.tsx", "src/app/components/ErrorBoundary.js", "src/app/routes/errorboundary/ErrorBoundary.js"  ],
   "exclude": [
     "node_modules"
   ]

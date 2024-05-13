@@ -7,17 +7,17 @@ import {
   BreadcrumbLink,
   Heading,
 } from "@chakra-ui/react";
-import RepoDetails from "../../components/RepoDetails";
 import { useRouter, useSearchParams } from "next/navigation";
 import { fetchRepoById } from "../../services.tsx/FetchRepos";
 import { Repo } from "../../types/repo";
+import RepoDetails from "../../components/RepoDetails";
 
 const RepoPage = () => {
   // Get search parameters from the URL
   const searchParams = useSearchParams();
   // Extract the fullName parameter from the search parameters
   const fullName: string | null | undefined = searchParams?.get("fullName");
-  // State to store repository data
+  // State to store repository datAAa
   const [repo, setRepo] = useState<Repo | null>(null);
   // State to manage loading status
   const [loading, setLoading] = useState<boolean>(false);
