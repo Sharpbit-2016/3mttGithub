@@ -120,14 +120,14 @@ const RepoCard = ({ repo, setRepos }) => {
             <Flex justify="flex-end" mt={4}>
                 <Link href={{ pathname: "/routes/repodetails", query: { fullName: repo.full_name } }}>
                     <Button colorScheme="teal" size="sm" mr={2}>
-                        View Repository
+                        View
                     </Button>
                 </Link>
                 <Button colorScheme="blue" size="sm" mr={2} onClick={handleEditRepo}>
-                    Edit Repository
+                    Edit
                 </Button>
                 <Button colorScheme="red" size="sm" onClick={openConfirmationModal}>
-                    {isDeleting ? <Spinner size="sm" color="white" /> : "Delete Repository"}
+                    {isDeleting ? <Spinner size="sm" color="white" /> : "Delete"}
                 </Button>
             </Flex>
 

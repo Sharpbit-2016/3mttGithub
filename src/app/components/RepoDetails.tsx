@@ -1,4 +1,3 @@
-"use client"
 import React, { useEffect, useState } from "react";
 import {
   Box,
@@ -9,7 +8,7 @@ import {
   IconButton,
   Divider,
 } from "@chakra-ui/react";
-import {FiGithub } from "react-icons/fi";
+import { FiGithub } from "react-icons/fi";
 
 const RepoDetails = ({ repo }) => {
   const [readmeContent, setReadmeContent] = useState("");
@@ -116,9 +115,11 @@ const RepoDetails = ({ repo }) => {
           <Heading as="h3" size="md" mb={2}>
             README
           </Heading>
-          <Text color="gray.700" whiteSpace="pre-line">
-            {readmeContent}
-          </Text>
+          <Box maxW="xl" overflowX="auto">
+            <Text color="gray.700" whiteSpace="pre-line">
+              {readmeContent}
+            </Text>
+          </Box>
         </>
       )}
     </Box>
