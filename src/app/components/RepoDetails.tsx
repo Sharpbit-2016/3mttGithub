@@ -33,18 +33,22 @@ const RepoDetails = ({ repo }) => {
 
   return (
     <Box
-      p={6}
       borderWidth="1px"
       borderRadius="lg"
       boxShadow="md"
       bg="white"
+      overflow="hidden"
       maxW="xl"
       mx="auto"
-      overflowWrap="break-word"
     >
       {/* Repository name and link to GitHub */}
-      <Flex alignItems="center" justifyContent="space-between" mb={4}>
-        <Heading as="h2" size="lg" fontWeight="bold" overflowWrap="break-word">
+      <Flex
+        alignItems="center"
+        justifyContent="space-between"
+        p={4}
+        borderBottomWidth="1px"
+      >
+        <Heading as="h2" size="lg" fontWeight="bold">
           {repo.name}
         </Heading>
         <Link
@@ -63,72 +67,56 @@ const RepoDetails = ({ repo }) => {
           />
         </Link>
       </Flex>
-      
+
       {/* Repository description */}
-      <Text color="gray.600" mb={4} overflowWrap="break-word">
-        {repo.description || "No description available."}
-      </Text>
-      
+      <Box p={4}>
+        <Text color="gray.600">{repo.description || "No description available."}</Text>
+      </Box>
+
       {/* Divider */}
       <Divider />
-      
+
       {/* Repository details */}
-      <Flex flexDirection={{ base: "column", md: "row" }} alignItems="center" justifyContent="space-between" mt={4}>
-        <Flex alignItems="center" mb={{ base: 4, md: 0 }}>
-          <Text mr={4} fontWeight="bold">
-            Stars:
-          </Text>
-          <Text>{repo.stargazers_count}</Text>
+      <Box p={4}>
+        <Flex justifyContent="space-between" alignItems="center" flexWrap="wrap">
+          <Box mb={{ base: 2, md: 0 }}>
+            <Text fontWeight="bold" mr={2}>Stars:</Text>
+            <Text>{repo.stargazers_count}</Text>
+          </Box>
+          <Box mb={{ base: 2, md: 0 }}>
+            <Text fontWeight="bold" mr={2}>Forks:</Text>
+            <Text>{repo.forks_count}</Text>
+          </Box>
+          <Box mb={{ base: 2, md: 0 }}>
+            <Text fontWeight="bold" mr={2}>License:</Text>
+            <Text>{repo.license ? repo.license.name : "Unknown"}</Text>
+          </Box>
+          <Box mb={{ base: 2, md: 0 }}>
+            <Text fontWeight="bold" mr={2}>Language:</Text>
+            <Text>{repo.language || "Unknown"}</Text>
+          </Box>
+          <Box mb={{ base: 2, md: 0 }}>
+            <Text fontWeight="bold" mr={2}>Created:</Text>
+            <Text>{new Date(repo.created_at).toLocaleDateString()}</Text>
+          </Box>
+          <Box mb={{ base: 2, md: 0 }}>
+            <Text fontWeight="bold" mr={2}>Last Updated:</Text>
+            <Text>{new Date(repo.updated_at).toLocaleDateString()}</Text>
+          </Box>
+          <Box mb={{ base: 2, md: 0 }}>
+            <Text fontWeight="bold" mr={2}>Primary Branch:</Text>
+            <Text whiteSpace="nowrap">{repo.default_branch}</Text>
+          </Box>
         </Flex>
-        <Flex alignItems="center" mb={{ base: 4, md: 0 }}>
-          <Text mr={4} fontWeight="bold">
-            Forks:
-          </Text>
-          <Text>{repo.forks_count}</Text>
-        </Flex>
-        <Flex alignItems="center" mb={{ base: 4, md: 0 }}>
-          <Text mr={4} fontWeight="bold">
-            License:
-          </Text>
-          <Text>{repo.license ? repo.license.name : "Unknown"}</Text>
-        </Flex>
-        <Flex alignItems="center" mb={{ base: 4, md: 0 }}>
-          <Text mr={4} fontWeight="bold">
-            Language:
-          </Text>
-          <Text>{repo.language || "Unknown"}</Text>
-        </Flex>
-        <Flex alignItems="center">
-          <Text mr={4} fontWeight="bold">
-            Created:
-          </Text>
-          <Text>{new Date(repo.created_at).toLocaleDateString()}</Text>
-        </Flex>
-        <Flex alignItems="center">
-          <Text mr={4} fontWeight="bold">
-            Last Updated:
-          </Text>
-          <Text>{new Date(repo.updated_at).toLocaleDateString()}</Text>
-        </Flex>
-      </Flex>
-      <Flex alignItems="center" mt={4} overflowX="auto">
-        <Text mr={4} fontWeight="bold">
-          Primary Branch:
-        </Text>
-        <Text whiteSpace="nowrap">{repo.default_branch}</Text>
-      </Flex>
-      
+      </Box>
+
       {/* Display README content if available */}
       {readmeContent && (
         <>
-          <Divider mt={6} mb={4} />
-          <Heading as="h3" size="md" mb={2}>
-            README
-          </Heading>
-          <Box maxW="xl" overflowX="auto">
-            <Text color="gray.700" whiteSpace="pre-line">
-              {readmeContent}
-            </Text>
+          <Divider />
+          <Box p={4}>
+            <Heading as="h3" size="md" mb={2}>README</Heading>
+            <Text color="gray.700" whiteSpace="pre-line">{readmeContent}</Text>
           </Box>
         </>
       )}
