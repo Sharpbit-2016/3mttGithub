@@ -7,6 +7,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import RepoCard from "./RepoCard";
+import { Repo } from "../types/repo";
 
 const RepoTable = ({ data, columns, itemsPerPage, setRepos }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -57,9 +58,9 @@ const RepoTable = ({ data, columns, itemsPerPage, setRepos }) => {
         mb={4}
       />
       <Stack spacing={4}>
-        {currentData.map((repo, index) => (
+        {currentData.map((repo:Repo, index:number) => (
           // Wrap RepoPage component with Suspense
-          <Suspense key={repo.id} fallback={<div>Loading...</div>}>
+          <Suspense key={index} fallback={<div>Loading Data...</div>}>
           <RepoCard repo={repo} setRepos={setRepos} />
         </Suspense>
         ))}
