@@ -69,7 +69,7 @@ export const createRepo = async (repoName: string, description: string): Promise
 };
 
 // Function to edit a repository's name and description
-export const editRepo = async (repoName: string, description: string, fullName: string): Promise<Repo> => {
+export const editRepo = async ( fullName: string, repoName: string, description: string): Promise<Repo> => {
   try {
     const response = await axios.patch(`${gitHubUrl}/repos/${fullName}`, {
       name: repoName,

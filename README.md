@@ -1,8 +1,14 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+Clone this repository
 
-First, run the development server:
+First, ensure you have nodejs installed on your system.
+create persinal access token in your github account with user SCOPES (user , delete repository and repo) ensure this scopes are checked then proceed generate and copy the token.
+
+replace  NEXT_PUBLIC_GITHUB_ACCESS_TOKEN value  .env file with generated your personal access token from your github repo.
+
+Run the development server:
 
 ```bash
 npm run dev
