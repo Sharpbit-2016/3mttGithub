@@ -31,17 +31,17 @@ export default function Home() {
   }, []);
 
   // Function to fetch repositories
-  const handleFetchRepos = async () => {
-    try {
-      setLoading(true); // Set loading to true
-      const fetchedRepos = await fetchRepos(); // Fetch repositories
-      setRepos(fetchedRepos); // Update repositories state
-      setLoading(false); // Set loading to false
-    } catch (error) {
-      setLoading(false); // Set loading to false if an error occurs
-      setError(error.message); // Set error message
-    }
+const handleFetchRepos = async () => {
+  try {
+    setLoading(true); // Set loading to true
+    const fetchedRepos = await fetchRepos(); // Fetch repositories
+    setRepos([...fetchedRepos]); // Update repositories state
+  } catch (error) {
+    setError(error.message); // Set error message
+  } finally {
+    setLoading(false); // Set loading to false
   }
+}
 
   // Function to open modal for creating new repository
   const handleOpenModal = () => {
@@ -53,36 +53,37 @@ export default function Home() {
     setIsModalOpen(false);
   }
 
-  // Function to handle form submission for creating new repository
-  const handleSubmit = async () => {
-    try {
-      handleCloseModal(); // Close modal
-      setLoading(true); // Set loading to true
-      await createRepo(newRepoName, newRepoDescription); // Create new repository
-      await handleFetchRepos(); // Fetch updated repositories
-      setNewRepoName(''); // Clear new repository name
-      setNewRepoDescription(''); // Clear new repository description
-      toast({ // Display success toast notification
-        title: "success",
-        description: "Repository Created",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      });
-    } catch (error) {
-      setLoading(false); // Set loading to false if an error occurs
-      handleCloseModal(); // Close modal
-      toast({ // Display error toast notification
-        title: "Error",
-        description: error.message,
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
-    } finally {
-      setLoading(false); // Set loading to false after repository creation process is completed
-    }
-  };
+// Function to handle form submission for creating new repository
+const handleSubmit = async () => {
+  try {
+    setLoading(true); // Set loading to true
+    handleCloseModal(); // Close modal
+    const newRepo = await createRepo(newRepoName, newRepoDescription); // Create new repository and get response
+    setRepos(prevRepos => [newRepo,...prevRepos, ]); // Add new repository to the existing list
+    setNewRepoName(''); // Clear new repository name
+    setNewRepoDescription(''); // Clear new repository description
+    toast({ // Display success toast notification
+      title: "success",
+      description: "Repository Created",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+  } catch (error) {
+    handleCloseModal(); // Close modal
+    toast({ // Display error toast notification
+      title: "Error",
+      description: error.message,
+      status: "error",
+      duration: 5000,
+      isClosable: true,
+    });
+  } finally {
+    setLoading(false); // Set loading to false after repository creation process is completed
+  }
+};
+
+
 
   return (
     <Box position="relative"> {/* Container for spinner positioning */}
